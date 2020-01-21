@@ -49,8 +49,6 @@ def train(model, trianing_set, num_epochs=10, device='cpu'):
     running_loss = 0
     train_data = []
     for epoch in range(num_epochs):
-        if epoch == 1:
-            break
         for idx_batch, batch in enumerate(train_loader):
             images, labels = batch['image'], batch['label']
             images, labels = images.to(device), labels.to(device)
