@@ -1,5 +1,12 @@
 import math
 
+'''
+Calculations for resulting output image sizes after convolution.
+These equations are taken from PyTorch docs under convolution layers
+category in torch.nn section.
+'''
+
+
 def conv2d_out(x_in, kernel_size, stride=1, padding=0, dilation=1):
     x_out = (x_in + 2 * padding - dilation * (kernel_size - 1) - 1) / stride + 1
     return math.floor(x_out)

@@ -6,6 +6,7 @@ from torchvision import transforms
 import matplotlib.pyplot as plt
 import data, torch, pickle
 
+
 class ConvNet(nn.Module):
 
     def __init__(self):
@@ -40,7 +41,7 @@ class ConvNet(nn.Module):
     
 
 def train(model, trianing_set, num_epochs=10, device='cpu'):
-    train_loader = DataLoader(dataset=training_set, batch_size=32, shuffle=True, num_workers=2)
+    train_loader = DataLoader(dataset=training_set, batch_size=50, shuffle=True, num_workers=2)
     val_loader = DataLoader(dataset=training_set, batch_size=1000, shuffle=True, num_workers=2)
     optimizer = optim.Adam(model.parameters(), lr=0.001)
     criterion = nn.NLLLoss()
@@ -73,8 +74,8 @@ def train(model, trianing_set, num_epochs=10, device='cpu'):
                 f"val_loss: {val_loss} val_accuracy: {accuracy}")
                 running_loss = 0
         running_loss = 0
-    torch.save(model.state_dict(), 'model_stat_dict.pt')
-    pickle.dump(train_data, open('training_data.pickle', 'wb'))
+    torch.save(model.state_dict(), './save/cats_vs_dogs.pth')
+    pickle.dump(train_data, open('./save/training_data.pickle', 'wb'))
 
 if __name__ == "__main__":
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')

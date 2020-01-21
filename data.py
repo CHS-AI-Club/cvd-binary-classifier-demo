@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os, cv2, torch, random, numpy
 
 '''
-The dataset for this 
+The dataset used is from Kaggle
 This is implementation of dataset and dataloading classes of pytorch.
 see: https://pytorch.org/tutorials/beginner/data_loading_tutorial.html
 for how to load in datasets.
@@ -65,7 +65,6 @@ class ToTensor(object):
         return {'image': image, 'label': label}
 
 def show_image(image, label):
-    print(label)
     if label == 0:
         label = 'cat'
     else:
